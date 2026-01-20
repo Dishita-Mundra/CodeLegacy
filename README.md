@@ -33,19 +33,25 @@ This results in:
 # 👥 Contributors
 
 1. Dishita Mundra 📝
+   
 📄 Documentation, Project Planning & Content Writing
 
 2. Nikhil Kr Jha 📝
+   
 📄 Documentation & Research
 
 3. Neetu Sheoran 🎨
+   
 💻 Frontend Development (UI/UX)
 
 4. Pragati 🎨
+   
 💻 Frontend Development
 
 5. Komal Kumari ⚙️
+    
 🔧 Backend Development
 
 6. Ankit Yadav ⚙️
+    
 🔧 Backend Development
