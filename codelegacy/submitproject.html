@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Project | Student Portal</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .submission-card {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h2 { color: #2d3436; margin-top: 0; }
+        p { color: #636e72; font-size: 0.9rem; }
+
+        .form-section { margin-top: 1.5rem; }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3436;
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus { border-color: #764ba2; outline: none; }
+
+        .file-drop-area {
+            border: 2px dashed #cbd5e0;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background-color: #f8fafc;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .file-drop-area:hover { background-color: #edf2f7; border-color: #764ba2; }
+
+        .submit-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2rem;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover { background: #5a3782; }
+    </style>
+</head>
+<body>
+
+<div class="submission-card">
+    <h2>Submit Your Project</h2>
+    <p>Please ensure your file is in .PDF or .ZIP format and under 25MB.</p>
+
+    <form action="/upload-project" method="POST" enctype="multipart/form-data">
+        <div class="form-section">
+            <label for="project-title">Project Title</label>
+            <input type="text" id="project-title" name="title" placeholder="e.g. Advanced Calculus Research" required>
+        </div>
+
+        <div class="form-section">
+            <label for="course">Select Course</label>
+            <select id="course" name="course">
+                <option>Computer Science 101</option>
+                <option>Digital Marketing</option>
+                <option>Business Ethics</option>
+            </select>
+        </div>
+
+        <div class="form-section">
+            <label>Project Files</label>
+            <div class="file-drop-area" onclick="document.getElementById('file-input').click()">
+                <span>Drag & drop files here or <strong>browse</strong></span>
+                <input type="file" id="file-input" name="projectFile" hidden required>
+            </div>
+            <p id="file-name" style="margin-top:10px; color:#764ba2; font-weight:bold;"></p>
+        </div>
+
+        <div class="form-section">
+            <label for="comments">Additional Comments (Optional)</label>
+            <textarea id="comments" name="comments" rows="4" placeholder="Mention any specific instructions for the reviewer..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Upload and Submit</button>
+    </form>
+</div>
+
+<script>
+    // Simple script to show the selected filename
+    const fileInput = document.getElementById('file-input');
+    const fileNameDisplay = document.getElementById('file-name');
+    
+    fileInput.addEventListener('change', function() {
+        if(this.files.length > 0) {
+            fileNameDisplay.textContent = "Selected: " + this.files[0].name;
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<header style="position: sticky; top:0">
+    <h1>Code Legacy</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="browse.html">Browse Projects</a>
+      <a href="submitproject.html">Submit Project</a>
+      <a href="login.html" id="loginLink">Login</a>
+      <a href="dashboard.html" id="dashboardLink" style="display: none;">Dashboard</a>
+      <a href="#" id="userNameLink" style="display: none; font-weight: bold;"></a>
+      <a href="#" id="logoutLink" style="display: none;" onclick="handleLogout(event)">Logout</a>
+    </nav>
+  </header>
+
+  <script src="auth.js"></script>
+  <script>
+    // Check authentication on page load
+    window.addEventListener('load', function() {
+      if (!authAPI.isAuthenticated()) {
+        window.location.href = 'login.html';
+      } else {
+        updateNavigation();
+      }
+    });
+
+    // Update navigation based on auth status
+    function updateNavigation() {
+      const isAuth = authAPI.isAuthenticated();
+      const user = authAPI.getStoredUser();
+
+      if (isAuth && user) {
+        document.getElementById('loginLink').style.display = 'none';
+        document.getElementById('dashboardLink').style.display = 'inline';
+        document.getElementById('userNameLink').style.display = 'inline';
+        document.getElementById('userNameLink').innerText = `Hi, ${user.fullname}`;
+        document.getElementById('logoutLink').style.display = 'inline';
+      } else {
+        document.getElementById('loginLink').style.display = 'inline';
+        document.getElementById('dashboardLink').style.display = 'none';
+        document.getElementById('userNameLink').style.display = 'none';
+        document.getElementById('logoutLink').style.display = 'none';
+      }
+    }
+
+    function handleLogout(e) {
+      e.preventDefault();
+      if (confirm('Are you sure you want to logout?')) {
+        authAPI.logout();
+        alert('Logged out successfully!');
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
+  <div id="hero01">
+    <section class="hero">
+      <div>
+        <h2>Explore Senior Projects</h2>
+        <p>Discover innovative projects created by senior students</p>
+      </div>
+    </section>
+
+    <section class="filters">
+      <select>
+        <option>Category</option>
+      </select>
+      <select>
+        <option>Year</option>
+      </select>
+      <select>
+        <option>Technology</option>
+      </select>
+      <button>Search</button>
+    </section>
+  </div>
+  </section>
+
+  <section class="section">
+    <h3>Featured Projects</h3>
+    <div class="grid">
+      <!-- <div class="card">
+        <div class="card-header">
+          <span class="category ai">AI</span>
+          <span class="level beginner">Beginner</span>
+          <h3>Smart Home Automation</h3>
+          <p>IoT-based smart home system using Arduino.</p>
+          <div class="tags">
+            <span>#Arduino</span><span>#Mobile App</span>
+          </div>
+          <button class="btn-view">View Project</button>
+        </div>
+      </div> -->
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category ai">AI</span>
+          <span class="level beginner">Beginner</span></div>
+          <h3>Eco-Friendly Vehicle</h3>
+          <p>Solar-powered electric vehicle design.</p>
+          <div class="tags">
+          <span>Solar</span><span>Sustainable</span>
+          </div>
+          <button class="btn-view"><a href="vehicle.html">View Project</a></button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category ai">AI</span>
+          <span class="level beginner">Beginner</span></div>
+          <h3>AI Health Diagnosis</h3>
+          <p>Machine learning system for medical diagnosis.</p>
+          <div class="tags">
+            <span>Python</span><span>Healthcare</span>
+          </div>
+          <button class="btn-view"><a href="health.html">View Project</a></button>
+      </div>
+
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category web">Web Dev</span>
+          <span class="level beginner">Beginner</span>
+        </div>
+        <h3>Smart Attendance</h3>
+        <p>Face-recognition system to automate student attendance.</p>
+        <div class="tags">
+          <span>#Python</span> <span>#OpenCV</span>
+        </div>
+        <button class="btn-view"><a href="insideprojects.html">View Project</a></button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category ai">AI / ML</span>
+          <span class="level intermediate">Intermediate</span>
+        </div>
+        <h3>Crop Predictor</h3>
+        <p>Identifying plant diseases using CNN image models.</p>
+        <div class="tags">
+          <span>#TensorFlow</span> <span>#CNN</span>
+        </div>
+        <button class="btn-view"><a href="crop.html">View Project</a></button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category iot">IoT</span>
+          <span class="level advanced">Advanced</span>
+        </div>
+        <h3>Smart Grid</h3>
+        <p>Monitoring electricity usage via Arduino and Cloud.</p>
+        <div class="tags">
+          <span>#C++</span> <span>#IoT</span>
+        </div>
+        <button class="btn-view"><a href="smartgrid.html">View Project</a></button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category blockchain">Blockchain</span>
+          <span class="level intermediate">Intermediate</span>
+        </div>
+        <h3>E-Voting System</h3>
+        <p>Secure voting using Ethereum smart contracts.</p>
+        <div class="tags">
+          <span>#Solidity</span> <span>#Web3</span>
+        </div>
+        <button class="btn-view"><a href="voting.html">View Project</a></button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category app">App Dev</span>
+          <span class="level beginner">Beginner</span>
+        </div>
+        <h3>Campus Navigator</h3>
+        <p>Internal map app for college students.</p>
+        <div class="tags">
+          <span>#Flutter</span> <span>#Dart</span>
+        </div>
+        <button class="btn-view"><a href="campusnavigator.html">View Project</a></button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category cyber">CyberSec</span>
+          <span class="level advanced">Advanced</span>
+        </div>
+        <h3>Network Sniffer</h3>
+        <p>Real-time packet analysis for security threats.</p>
+        <div class="tags">
+          <span>#Python</span> <span>#Scapy</span>
+        </div>
+        <button class="btn-view"><a href="network.html">View Project</a></button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category cloud">Cloud</span>
+          <span class="level intermediate">Intermediate</span>
+        </div>
+        <h3>Auto Cloud Sorter</h3>
+        <p>Organizing AWS S3 buckets using Lambda.</p>
+        <div class="tags">
+          <span>#AWS</span> <span>#NodeJS</span>
+        </div>
+        <button class="btn-view">View Project</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category data">Data Science</span>
+          <span class="level beginner">Beginner</span>
+        </div>
+        <h3>Sales Forecast</h3>
+        <p>Predicting retail trends using historical data.</p>
+        <div class="tags">
+          <span>#Pandas</span> <span>#Matplotlib</span>
+        </div>
+        <button class="btn-view">View Project</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category vr">VR / AR</span>
+          <span class="level advanced">Advanced</span>
+        </div>
+        <h3>Virtual Campus</h3>
+        <p>A 3D VR tour of the University campus.</p>
+        <div class="tags">
+          <span>#Unity</span> <span>#C#</span>
+        </div>
+        <button class="btn-view">View Project</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category ecom">E-Commerce</span>
+          <span class="level intermediate">Intermediate</span>
+        </div>
+        <h3>Book Exchange</h3>
+        <p>Student marketplace for second-hand books.</p>
+        <div class="tags">
+          <span>#React</span> <span>#Firebase</span>
+        </div>
+        <button class="btn-view">View Project</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category game">Game Dev</span>
+          <span class="level beginner">Beginner</span>
+        </div>
+        <h3>Space Invader</h3>
+        <p>Classic arcade game built with Python.</p>
+        <div class="tags">
+          <span>#PyGame</span> <span>#Python</span>
+        </div>
+        <button class="btn-view">View Project</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="category nlp">NLP</span>
+          <span class="level intermediate">Intermediate</span>
+        </div>
+        <h3>Chatbot Assistant</h3>
+        <p>AI assistant to answer college queries.</p>
+        <div class="tags">
+          <span>#NLTK</span> <span>#Python</span>
+        </div>
+        <button class="btn-view">View Project</button>
+      </div>
+
+    </div>
+    </div>
+    <br><br>
+    <section class="cta">
+      <h2>Share Your Project!</h2>
+      <p>Upload your project and inspire juniors</p>
+      <a href="submit.html"><button>Submit Your Project</button></a>
+    </section>
+
+    <footer>
+      © 2026 Project Name
+    </footer>
+
+   
+
+</body>
+
+</html>

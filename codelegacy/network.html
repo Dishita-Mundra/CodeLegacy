@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetScan | Packet Analyzer</title>
+    <link rel="stylesheet" href="network.css">
+</head>
+<body class="no-select">
+
+    <nav>
+        <div class="logo">Net<span>Sniffer</span></div>
+        <div class="status-box">Listening on Interface: eth0</div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Network Packet Sniffer</h1>
+            <p>Capturing and decoding raw data packets to monitor network traffic.</p>
+        </header>
+
+        <section class="tech-stack">
+            <h3>Protocol Stack:</h3>
+            <div class="tag-row">
+                <span class="tag">Python (Scapy Library)</span>
+                <span class="tag">Raw Sockets</span>
+                <span class="tag">Wireshark (Analysis)</span>
+                <span class="tag">TCP/IP Protocols</span>
+            </div>
+        </section>
+
+        
+
+        <section class="code-vault">
+            <div class="vault-header">
+                <span class="file-name">packet_sniffer.py (Logic)</span>
+            </div>
+            <pre class="code-display">
+<code>
+from scapy.all import sniff
+
+def process_packet(packet):
+    # Logic to extract IP and Payload
+    if packet.haslayer('IP'):
+        ip_src = packet['IP'].src
+        ip_dst = packet['IP'].dst
+        print(f"Captured: {ip_src} -> {ip_dst}")
+
+# Sniff packets on the network
+sniff(filter="ip", prn=process_packet, store=0)
+</code>
+            </pre>
+        </section>
+
+        
+
+        <section class="analysis-grid">
+            <div class="analysis-card">
+                <h3>Promiscuous Mode</h3>
+                <p>Enables the network card to pass all traffic it receives to the CPU, not just traffic addressed to itself.</p>
+            </div>
+            <div class="analysis-card">
+                <h3>Packet Dissection</h3>
+                <p>Breaking down raw binary data into readable fields like Source IP, Destination Port, and Protocol type.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+   // Disable Right-click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Block Inspect Element and Copy Shortcuts
+document.onkeydown = function(e) {
+    if (e.keyCode == 123 || (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 'i'))) {
+        return false;
+    }
+};
+
+console.log("NetSniffer Protection: Active. Packet Capture Simulated.");
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Project Archive</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body class="no-select">
+
+    <div class="reg-container">
+        <header class="reg-header">
+            <h2>Create Account</h2>
+            <p>Join the Senior-Junior Project Network</p>
+        </header>
+
+        <form id="registerForm">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter your name" required>
+            </div>
+
+            <div class="input-group">
+    <label>College Email</label>
+    <input type="email" id="email" 
+           placeholder="yourname@krmu.edu.in" 
+           required>
+    <span id="emailMessage" class="error-text"></span>
+</div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                <span id="message" class="error-text"></span>
+            </div>
+
+            <button type="submit" class="reg-btn">Register Now</button>
+        </form>
+
+        <p style="text-align: center; margin-top: 20px;">Already have an account? <a href="login.html" style="color: #007bff; text-decoration: none;">Login here</a></p>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Protection Logic (No Copy/Paste)
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123 || (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'u'))) return false;
+        };
+
+        const emailInput = document.getElementById('email');
+        const emailMessage = document.getElementById('emailMessage');
+        const regBtn = document.querySelector('.reg-btn');
+
+        // Regex to strictly match @krmu.edu.in
+        const collegeEmailRegex = /^[a-zA-Z0-9._%+-]+@krmu\.edu\.in$/i;
+
+        function validateEmail() {
+            const emailValue = emailInput.value;
+
+            if (emailValue === "") {
+                emailMessage.innerText = "";
+                return false;
+            } else if (collegeEmailRegex.test(emailValue)) {
+                emailMessage.innerText = "✓ Valid College Email";
+                emailMessage.className = "error-text match";
+                return true;
+            } else {
+                emailMessage.innerText = "× Use official @krmu.edu.in email only";
+                emailMessage.className = "error-text no-match";
+                return false;
+            }
+        }
+
+        // Handle form submission with backend integration
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const message = document.getElementById('message');
+
+            // Validate
+            const isEmailValid = validateEmail();
+            const isPasswordValid = password === confirmPassword;
+
+            if (!isPasswordValid) {
+                message.innerText = "Passwords do not match";
+                message.className = "error-text no-match";
+                return;
+            }
+
+            if (!isEmailValid) {
+                return;
+            }
+
+            // Disable button during submission
+            regBtn.disabled = true;
+            regBtn.innerText = 'Registering...';
+
+            try {
+                const result = await authAPI.register(fullname, email, password, confirmPassword, 'student');
+                
+                alert('Registration Successful! Redirecting...');
+                
+                // Redirect to appropriate page based on user type
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } catch (error) {
+                message.innerText = error.message || 'Registration failed. Please try again.';
+                message.className = "error-text no-match";
+                regBtn.disabled = false;
+                regBtn.innerText = 'Register Now';
+            }
+        });
+
+        // Event listener for real-time email check
+        emailInput.addEventListener('keyup', validateEmail);
+        
+        // Clear password message when typing
+        document.getElementById('password').addEventListener('keyup', function() {
+            if (this.value === document.getElementById('confirmPassword').value) {
+                document.getElementById('message').innerText = "";
+            }
+        });
+
+        document.getElementById('confirmPassword').addEventListener('keyup', function() {
+            if (this.value === document.getElementById('password').value && this.value !== "") {
+                document.getElementById('message').innerText = "✓ Passwords match";
+                document.getElementById('message').className = "error-text match";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Code Legacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar {
+            background-color: #1a1a1a;
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar h2 {
+            color: white;
+            font-size: 24px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(12, 12, 211);
+            margin-bottom: 30px;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid rgb(12, 12, 211);
+            border-radius: 5px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: rgb(12, 12, 211);
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #333;
+            font-size: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: rgb(12, 12, 211);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background-color: rgb(9, 9, 172);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            background-color: #5a6268;
+        }
+
+        .not-logged-in {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .not-logged-in a {
+            color: rgb(12, 12, 211);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .not-logged-in a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>Code Legacy</h2>
+        <button class="logout-btn" id="logoutBtn" style="display: none;">Logout</button>
+    </div>
+
+    <div class="container" id="dashboardContainer" style="display: none;">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="user-info">
+            <div class="info-item">
+                <div class="info-label">Full Name</div>
+                <div class="info-value" id="fullnameDisplay">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Email</div>
+                <div class="info-value" id="emailDisplay">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Account Type</div>
+                <div class="info-value" id="userTypeDisplay">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Member Since</div>
+                <div class="info-value" id="createdAtDisplay">-</div>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <a href="index.html" class="btn btn-primary">Home</a>
+            <a href="register.html" class="btn btn-secondary">Edit Profile (Coming Soon)</a>
+        </div>
+    </div>
+
+    <div class="container not-logged-in" id="notLoggedInContainer">
+        <h1>Please Login</h1>
+        <p>You need to be logged in to access this page.</p>
+        <p style="margin-top: 20px;">
+            <a href="login.html">Login</a> | <a href="register.html">Register</a>
+        </p>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        const dashboardContainer = document.getElementById('dashboardContainer');
+        const notLoggedInContainer = document.getElementById('notLoggedInContainer');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Check if user is logged in
+        function checkAuth() {
+            const user = authAPI.getStoredUser();
+            const isAuth = authAPI.isAuthenticated();
+
+            if (isAuth && user) {
+                dashboardContainer.style.display = 'block';
+                notLoggedInContainer.style.display = 'none';
+                logoutBtn.style.display = 'block';
+
+                // Display user info
+                document.getElementById('fullnameDisplay').innerText = user.fullname;
+                document.getElementById('emailDisplay').innerText = user.email;
+                document.getElementById('userTypeDisplay').innerText = 
+                    user.userType === 'student' ? 'Student' : 'Faculty';
+                document.getElementById('createdAtDisplay').innerText = 'N/A';
+            } else {
+                dashboardContainer.style.display = 'none';
+                notLoggedInContainer.style.display = 'block';
+                logoutBtn.style.display = 'none';
+            }
+        }
+
+        // Logout handler
+        logoutBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to logout?')) {
+                authAPI.logout();
+                alert('Logged out successfully!');
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Check auth on page load
+        window.addEventListener('load', checkAuth);
+    </script>
+</body>
+</html>

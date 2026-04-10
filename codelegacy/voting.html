@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureVote | Digital Democracy</title>
+    <link rel="stylesheet" href="voting.css">
+</head>
+<body class="no-select">
+
+    <nav>
+        <div class="logo">Secure<span>Vote</span></div>
+        <div class="security-badge">256-bit AES Encrypted</div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Electronic Voting System</h1>
+            <p>A decentralized approach to secure, tamper-proof, and anonymous voting.</p>
+        </header>
+
+        <section class="tech-stack">
+            <h3>Technical Architecture:</h3>
+            <div class="stack-list">
+                <span class="tech-item">Solidity (Smart Contracts)</span>
+                <span class="tech-item">SHA-256 Hashing</span>
+                <span class="tech-item">React.js (Frontend)</span>
+                <span class="tech-item">Node.js (Verification)</span>
+            </div>
+        </section>
+
+        
+
+        <section class="code-vault">
+            <div class="vault-header">
+                <span class="file-name">VoteContract.sol (Blockchain Logic)</span>
+            </div>
+            <pre class="code-display">
+<code>
+// Smart Contract logic to prevent multiple votes
+mapping(address => bool) public hasVoted;
+
+function castVote(uint _candidateId) public {
+    // 1. Check if voter already voted
+    require(!hasVoted[msg.sender], "Voter has already voted.");
+    
+    // 2. Mark as voted
+    hasVoted[msg.sender] = true;
+    
+    // 3. Update vote count securely
+    candidates[_candidateId].voteCount++;
+    
+    emit votedEvent(_candidateId);
+}
+</code>
+            </pre>
+        </section>
+
+        <section class="core-features">
+            <div class="feature-card">
+                <h3>Voter Anonymity</h3>
+                <p>The system decouples the Voter's Identity from the specific ballot cast using Zero-Knowledge Proofs.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Immutability</h3>
+                <p>Once a vote is recorded on the blockchain, it cannot be deleted or modified by any authority.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Disable the context menu (Right-click)
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Block common shortcuts: Ctrl+C, Ctrl+U (View Source), Ctrl+S, F12 (Inspect)
+document.onkeydown = function(e) {
+    if (e.keyCode == 123) return false;
+    if (e.ctrlKey && (e.keyCode == 'C'.charCodeAt(0) || 
+                     e.keyCode == 'U'.charCodeAt(0) || 
+                     e.keyCode == 'S'.charCodeAt(0))) {
+        return false;
+    }
+};
+
+console.log("SecureVote Firewall: Active.");
+    </script>
+</body>
+</html>

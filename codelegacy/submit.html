@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Project | Senior Archive</title>
+    <link rel="stylesheet" href="submit.css">
+</head>
+<body class="no-select">
+
+    <div class="form-container">
+        <header class="form-header">
+            <h2>Upload Your Project</h2>
+            <p>Help the next batch by sharing your hard work.</p>
+        </header>
+
+        <form id="projectForm">
+            <div class="input-group">
+                <label>Project Name</label>
+                <input type="text" placeholder="e.g., Smart Grid Manager" required>
+            </div>
+
+            <div class="input-group">
+                <label>Description (Briefly explain what it does)</label>
+                <textarea rows="4" placeholder="How will this help juniors?" required></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>GitHub Repository Link (Optional)</label>
+                <input type="url" placeholder="https://github.com/username/repo">
+            </div>
+
+            <div class="upload-section">
+                <div class="upload-box">
+                    <label for="fileUpload">📁 Project Files (Zip/PDF)</label>
+                    <input type="file" id="fileUpload" accept=".zip,.pdf,.rar">
+                </div>
+                
+                <div class="upload-box">
+                    <label for="videoUpload">🎥 Project Demo Video</label>
+                    <input type="file" id="videoUpload" accept="video/*">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Publish Project</button>
+        </form>
+    </div>
+
+    <script>
+        // Protection Logic
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.onkeydown = function(e) {
+    if (e.keyCode == 123 || (e.ctrlKey && (e.key === 'c' || e.key === 'u'))) return false;
+};
+
+// Form Submission Logic
+document.getElementById('projectForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // In a real app, you would use FormData to send this to a server
+    alert("Success! Your project has been submitted for review.");
+    this.reset();
+});
+    </script>
+</body>
+</html>

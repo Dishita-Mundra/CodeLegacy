@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail - Senior Archive</title>
+    <link rel="stylesheet" href="inside.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Smart Attendance System</h1>
+            <p class="author">By: Rahul Sharma (Batch 2024)</p>
+        </header>
+
+        <section class="tech-stack">
+            <h3>Languages & Tools Used:</h3>
+            <div id="tags-container">
+                </div>
+        </section>
+
+        <section class="description">
+            <h3>Project Overview</h3>
+            <p>This project uses Facial Recognition to automate attendance in classrooms, reducing manual errors and saving time.</p>
+        </section>
+
+        <section class="code-section">
+            <div class="code-header">
+                <span>Main Logic (Python)</span>
+                <button onclick="copyCode()">Copy Code</button>
+            </div>
+            <pre id="code-block">
+import cv2
+import numpy as np
+
+# Load the pre-trained face detection model
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+def detect_faces(img):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+    return faces
+            </pre>
+        </section>
+    </div>
+
+    <script>
+        // Mock data for the project
+const projectData = {
+    languages: ["Python", "OpenCV", "NumPy", "SQLite"],
+};
+
+// Function to render language badges
+function displayTags() {
+    const container = document.getElementById('tags-container');
+    projectData.languages.forEach(lang => {
+        const span = document.createElement('span');
+        span.className = 'badge';
+        span.innerText = lang;
+        container.appendChild(span);
+    });
+}
+
+// Function to copy code to clipboard
+function copyCode() {
+    const code = document.getElementById('code-block').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        alert("Code copied to clipboard!");
+    });
+}
+
+// Initialize
+window.onload = displayTags;
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusMap | Smart Wayfinding</title>
+    <link rel="stylesheet" href="campusnavigator.css">
+</head>
+<body class="no-select">
+
+    <nav>
+        <div class="logo">Campus<span>Nav</span></div>
+        <div class="version">v2.1 Stable</div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Intelligent Campus Navigation</h1>
+            <p>Real-time routing and indoor mapping for complex university infrastructures.</p>
+        </header>
+
+        <section class="tech-stack">
+            <h3>Mapping Stack:</h3>
+            <div class="tag-container">
+                <span class="tag">Leaflet.js / Google Maps API</span>
+                <span class="tag">Dijkstra’s Algorithm</span>
+                <span class="tag">GeoJSON Data</span>
+                <span class="tag">Firebase (Real-time Locations)</span>
+            </div>
+        </section>
+
+        
+
+        <section class="code-vault">
+            <div class="vault-header">
+                <span class="file-name">PathFinder.js</span>
+            </div>
+            <pre class="code-display">
+<code>
+// Simple Dijkstra implementation logic
+const findShortestPath = (graph, startNode, endNode) => {
+    let distances = {};
+    let prev = {};
+    let pq = new PriorityQueue();
+
+    distances[startNode] = 0;
+    pq.enqueue(startNode, 0);
+
+    while (!pq.isEmpty()) {
+        let current = pq.dequeue().element;
+        if (current === endNode) break; 
+        
+        // Logic to update neighbor weights...
+    }
+    return reconstructPath(prev, endNode);
+};
+</code>
+            </pre>
+        </section>
+
+        <section class="info-grid">
+            <div class="info-card">
+                <h3>Indoor Positioning</h3>
+                <p>Uses Wi-Fi RSSI or Bluetooth Beacons to locate users inside multi-story buildings where GPS fails.</p>
+            </div>
+            <div class="info-card">
+                <h3>POIs (Points of Interest)</h3>
+                <p>Metadata for every room, lab, and washroom categorized for quick search and filter.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.onkeydown = function(e) {
+    if (e.keyCode == 123 || (e.ctrlKey && (e.key === 'c' || e.key === 'u'))) {
+        return false;
+    }
+};
+
+console.log("CampusNav Security: Encryption Active.");
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+:root {
+    --medical-blue: #0077b6;
+    --dark-bg: #1e293b;
+    --code-green: #4ade80;
+}
+
+/* Hard block on selection */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+body {
+    background: #f0f4f8;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    color: #334155;
+}
+
+.container { max-width: 1000px; margin: auto; padding: 20px; }
+
+nav {
+    background: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--medical-blue);
+}
+
+.logo { font-size: 24px; font-weight: 800; color: var(--medical-blue); }
+
+.hero { text-align: center; padding: 40px 0; }
+
+.stack-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.stack-item {
+    background: #e2e8f0;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* Code Display Box */
+.code-container { margin: 30px 0; }
+
+.code-window {
+    background: var(--dark-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.window-header {
+    background: #0f172a;
+    padding: 10px 20px;
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.code-display {
+    padding: 25px;
+    margin: 0;
+    color: var(--code-green);
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    pointer-events: none; /* Makes the box untouchable */
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--medical-blue);
+}

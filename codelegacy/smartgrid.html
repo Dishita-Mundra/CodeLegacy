@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltGrid | Smart Energy Management</title>
+    <link rel="stylesheet" href="smartgrid.css">
+</head>
+<body class="no-select">
+
+    <nav>
+        <div class="logo">Volt<span>Grid</span></div>
+        <div class="status">System Status: <span class="online">● Operational</span></div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Smart Grid Infrastructure</h1>
+            <p>Automated load balancing and renewable energy integration for modern cities.</p>
+        </header>
+
+        <section class="tech-stack">
+            <h3>System Architecture:</h3>
+            <div class="badge-row">
+                <span class="badge">C++ (Micro-controllers)</span>
+                <span class="badge">MQTT (Data Protocol)</span>
+                <span class="badge">Node.js (Real-time Dashboard)</span>
+                <span class="badge">Time-Series DB (Storage)</span>
+            </div>
+        </section>
+
+        <section class="code-vault">
+            <div class="code-header">
+                <span class="file-name">GridBalancer.js</span>
+            </div>
+            <pre class="code-display">
+<code>
+// Real-time Load Balancing Logic
+function balanceGrid(supply, demand) {
+    if (demand > supply) {
+        const deficit = demand - supply;
+        console.log(`Alert: Drawing ${deficit}kW from Battery Storage`);
+        activateRenewables(true);
+    } else {
+        const surplus = supply - demand;
+        storeEnergy(surplus); // Recharge Grid Batteries
+    }
+}
+
+// Logic for Automated Outage Detection
+setInterval(checkNodeHealth, 5000);
+</code>
+            </pre>
+        </section>
+
+        <section class="grid-details">
+            <div class="detail-card">
+                <h3>Bidirectional Flow</h3>
+                <p>Allows consumers with solar panels to sell excess power back to the main utility grid.</p>
+            </div>
+            <div class="detail-card">
+                <h3>Demand Response</h3>
+                <p>Automatically dims streetlights or non-essential loads during peak demand hours.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Disable Right-Click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable Ctrl+C, Ctrl+U, and F12
+document.onkeydown = function(e) {
+    if (e.keyCode == 123) return false; // F12
+    if (e.ctrlKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'U'.charCodeAt(0))) {
+        return false;
+    }
+};
+
+console.log("VoltGrid Security: Active. Page is Read-Only.");
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Drive | Sustainable Future</title>
+    <link rel="stylesheet" href="vehicle.css">
+</head>
+<body class="no-select">
+
+    <nav>
+        <div class="logo">Eco<span>Drive</span></div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h1>The Future is Electric</h1>
+            <p>Exploring zero-emission technology for a cleaner planet.</p>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">⚡</div>
+                <h3>Battery Electric (BEV)</h3>
+                <p>Runs entirely on electricity using onboard batteries. No tailpipe emissions.</p>
+                <div class="tech-tag">Lithium-ion</div>
+            </div>
+
+            <div class="card">
+                <div class="icon">💧</div>
+                <h3>Hydrogen Fuel Cell</h3>
+                <p>Converts hydrogen into electricity. The only byproduct is pure water vapor.</p>
+                <div class="tech-tag">H2-Fuel</div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🚲</div>
+                <h3>Micro-Mobility</h3>
+                <p>E-bikes and scooters designed for short urban commutes to reduce traffic.</p>
+                <div class="tech-tag">Urban Tech</div>
+            </div>
+        </div>
+
+        <section class="stats">
+            <h2>Environmental Impact</h2>
+            <div class="stat-bar">
+                <div class="progress" id="co2-reduction">75% CO2 Reduction</div>
+            </div>
+        </section>
+    </main>
+<section class="code-archive">
+    <h2>Project Technical Core</h2>
+    <p class="subtitle">Understanding the logic behind sustainable mobility.</p>
+
+    <div class="code-box-container">
+        <div class="lang-info">
+            <span class="badge-lang">C++</span>
+            <span class="badge-lang">Embedded Systems</span>
+            <span class="badge-lang">Real-time</span>
+        </div>
+
+        <div class="code-window">
+            <div class="code-header-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="file-name">BatteryManagement.cpp</span>
+            </div>
+            <pre class="code-content">
+<code>
+// Logic for optimizing battery discharge
+#include &lt;iostream&gt;
+
+void monitorBattery(float charge) {
+    if (charge < 20.0) {
+        std::cout << "Eco-Mode Activated" << std::endl;
+        limitMotorOutput(0.5); // Reduce power by 50%
+    }
+}
+</code>
+            </pre>
+        </div>
+    </div>
+</section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    // Simple animation for the progress bar on load
+    const progressBar = document.getElementById('co2-reduction');
+    
+    setTimeout(() => {
+        progressBar.style.width = "75%";
+    }, 500);
+
+    // Disable Right-Click to further discourage "Save As" or "Copy"
+    document.addEventListener('contextmenu', event => event.preventDefault());
+});
+    </script>
+</body>
+</html>

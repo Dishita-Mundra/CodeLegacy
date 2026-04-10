@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroPredict | Smart Agriculture</title>
+    <link rel="stylesheet" href="crop.css">
+</head>
+<body class="no-select">
+
+    <nav>
+        <div class="logo">Agro<span>Predict</span></div>
+        <div class="nav-links">Smart Farming Project</div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Crop Recommendation System</h1>
+            <p>Predicting the best crop based on Soil Quality and Weather patterns.</p>
+        </header>
+
+        <section class="tech-info">
+            <h3>Development Stack:</h3>
+            <div class="stack-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Scikit-Learn</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">IoT Sensors</span>
+            </div>
+        </section>
+
+        <section class="code-vault">
+            <div class="code-card">
+                <div class="code-header">
+                    <span class="lang-label">Python (ML Model)</span>
+                </div>
+                <pre class="code-area">
+<code>
+from sklearn.ensemble import RandomForestClassifier
+
+# Input Features: [Nitrogen, Phosphorus, Potassium, Temp, Humidity, pH, Rainfall]
+X = [[90, 42, 43, 20.8, 82.0, 6.5, 202.9]] 
+y = ['Rice']
+
+# Initialize the Model
+clf = RandomForestClassifier(n_estimators=100)
+clf.fit(X_train, y_train)
+
+# Prediction Logic
+prediction = clf.predict(new_sensor_data)
+print(f"Recommended Crop: {prediction}")
+</code>
+                </pre>
+            </div>
+        </section>
+
+        <div class="feature-grid">
+            <div class="f-box">
+                <h4>Soil Analysis</h4>
+                <p>Measures N-P-K levels to determine soil fertility.</p>
+            </div>
+            <div class="f-box">
+                <h4>Climate Integration</h4>
+                <p>Fetches real-time rainfall and temperature data.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Disable Right-Click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable common DevTools & Copy shortcuts
+document.onkeydown = function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+        return false;
+    }
+};
+    </script>
+</body>
+</html>

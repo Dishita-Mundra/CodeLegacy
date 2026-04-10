@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAI | Diagnostic Intelligence</title>
+    <link rel="stylesheet" href="health.css">
+</head>
+<body class="no-select">
+
+    <nav>
+        <div class="logo">Med<span>AI</span></div>
+        <p>AI-Powered College Research Archive</p>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <h1>AI in Health Diagnosis</h1>
+            <p>Analyzing medical imaging and patient data using Neural Networks.</p>
+        </header>
+
+        <section class="stack-section">
+            <h3>Core Stack for Medical AI:</h3>
+            <div class="stack-grid">
+                <div class="stack-item"><strong>Python</strong> (Model Training)</div>
+                <div class="stack-item"><strong>TensorFlow/PyTorch</strong> (Deep Learning)</div>
+                <div class="stack-item"><strong>Flask/Django</strong> (API Backend)</div>
+                <div class="stack-item"><strong>OpenCV</strong> (Image Processing)</div>
+            </div>
+        </section>
+
+        <section class="code-container">
+            <div class="code-window">
+                <div class="window-header">
+                    <span class="file-name">pneumonia_detection.py</span>
+                </div>
+                <pre class="code-display">
+<code>
+import tensorflow as tf
+from tensorflow.keras import layers
+
+# Define a Simple CNN for X-ray Classification
+def build_model():
+    model = tf.keras.Sequential([
+        layers.Conv2D(32, (3, 3), activation='relu', input_shape=(150, 150, 3)),
+        layers.MaxPooling2D(2, 2),
+        layers.Flatten(),
+        layers.Dense(128, activation='relu'),
+        layers.Dense(1, activation='sigmoid') # Binary Diagnosis
+    ])
+    return model
+
+print("Diagnostic Model Initialized...")
+</code>
+                </pre>
+            </div>
+        </section>
+
+        <section class="info-grid">
+            <div class="info-card">
+                <h3>Image Recognition</h3>
+                <p>Used for MRI, X-Ray, and CT scan analysis to detect tumors or fractures early.</p>
+            </div>
+            <div class="info-card">
+                <h3>Predictive Analytics</h3>
+                <p>Analyzes electronic health records to predict patient risks for chronic diseases.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.onkeydown = function(e) {
+    // Disable F12 (Inspect Element)
+    if(e.keyCode == 123) return false;
+    
+    // Disable Ctrl+C (Copy)
+    if(e.ctrlKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+    
+    // Disable Ctrl+U (View Source)
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+};
+
+console.log("MedAI Protection Active: Copy/Paste Disabled.");
+    </script>
+</body>
+</html>

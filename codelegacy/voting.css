@@ -1,0 +1,88 @@
+:root {
+    --security-navy: #0d1b2a;
+    --action-blue: #3a86ff;
+    --text-silver: #e0e1dd;
+}
+
+/* Strict Prevention of Copy/Paste */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Inter', system-ui, sans-serif;
+    margin: 0;
+    color: var(--security-navy);
+}
+
+.container { max-width: 900px; margin: auto; padding: 20px; }
+
+nav {
+    background: var(--security-navy);
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
+.logo span { color: var(--action-blue); }
+.security-badge { font-size: 0.8rem; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 4px; }
+
+.hero { text-align: center; padding: 60px 0; }
+
+.tech-item {
+    background: #e9ecef;
+    padding: 7px 15px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 5px;
+    display: inline-block;
+}
+
+/* Protected Code Window */
+.code-vault {
+    background: #1b263b;
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.vault-header {
+    background: #0d1b2a;
+    padding: 12px 25px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom: 1px solid #415a77;
+}
+
+.file-name { color: #778da9; font-family: monospace; font-size: 0.85rem; }
+
+.code-display {
+    padding: 30px;
+    margin: 0;
+    color: #4cc9f0;
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+    pointer-events: none; /* Disables all mouse clicks/highlighting */
+}
+
+.core-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 6px solid var(--action-blue);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
