@@ -1,7 +1,7 @@
 # 🚀CodeLegacy
 Turning college projects into meaningful code.  💻
 CodeLegacy is a collaborative platform designed to store, manage, and showcase university projects.
-It helps students preserve their academic work 📚 and allows juniors to learn, explore, and build better projects 🚀.
+It helps students preserve their academic work and allows juniors to learn, explore, and build better projects 🚀.
 
 # ❓Problem Statement
 Every academic year, students create valuable technical projects 🛠️.
